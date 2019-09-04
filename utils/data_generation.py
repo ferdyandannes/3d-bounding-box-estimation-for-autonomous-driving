@@ -25,6 +25,25 @@ def prepare_input_and_output(train_inst, image_dir):
         xmax = min(xmax, img.shape[1] - 1)
         ymax = min(ymax, img.shape[0] - 1)
 
+    xmin_temp = xmin
+    xmax_temp = xmax
+    ymin_temp = ymin
+    ymax_temp = ymax
+
+    if xmin_temp >= xmax_temp :
+        xmin = xmax_temp
+        xmax = xmin_temp
+    else :
+        xmin = xmin_temp
+        xmax = xmax_temp
+
+    if ymin_temp >= ymax_temp :
+        ymin = ymax_temp
+        ymax = ymin_temp
+    else :
+        ymin = ymin_temp
+        ymax = ymax_temp
+        
     img = copy.deepcopy(img[ymin:ymax + 1, xmin:xmax + 1]).astype(np.float32)
 
     # flip the image
